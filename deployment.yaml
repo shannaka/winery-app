@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-ml-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-ml
+  template:
+    metadata:
+      labels:
+        app: flask-ml
+    spec:
+      containers:
+      - name: flask-ml
+        image: gcr.io/YOUR_PROJECT_ID/flask-ml-app
+        ports:
+        - containerPort: 5000
+
